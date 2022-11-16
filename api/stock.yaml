@@ -1,0 +1,70 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Stock
+  x-ibm-name: stock
+basePath: /
+x-ibm-configuration:
+  properties:
+    target-url:
+      value: https://httpbin.org/anything/
+      description: URL of the proxy policy
+      encoded: false
+  cors:
+    enabled: true
+  gateway: datapower-api-gateway
+  type: rest
+  phase: realized
+  enforced: true
+  testable: true
+  assembly:
+    execute:
+      - invoke:
+          title: invoke
+          version: 2.0.0
+          verb: keep
+          target-url: $(target-url)
+          follow-redirects: false
+          timeout: 60
+          parameter-control:
+            type: blocklist
+            values: []
+          header-control:
+            type: blocklist
+            values: []
+          inject-proxy-headers: true
+          persistent-connection: true
+          backend-type: json
+          output: order
+    finally: []
+  activity-log:
+    enabled: true
+    success-content: activity
+    error-content: payload
+paths:
+  /stock/{sku}:
+    parameters:
+      - name: sku
+        required: true
+        in: path
+        type: string
+    get:
+      responses:
+        '200':
+          description: success
+          schema:
+            type: integer
+securityDefinitions:
+  clientID:
+    type: apiKey
+    in: header
+    name: X-IBM-Client-Id
+security:
+  - clientID: []
+schemes:
+  - https
+responses: {}
+consumes:
+  - application/json
+produces:
+  - application/json

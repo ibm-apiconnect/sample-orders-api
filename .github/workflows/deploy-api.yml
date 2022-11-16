@@ -1,0 +1,52 @@
+name: Deploy API
+on: [push]
+
+jobs:
+  apic-deploy-sandbox:
+    runs-on: ubuntu-latest
+    name: Deploy API to Sandbox
+    steps:
+    - uses: actions/checkout@v2
+    - name: Deploy API to Sandbox
+      uses: ibm-apiconnect/actions@main
+      with:
+        manager-host: api-manager.us-east-a.apiconnect.automation.ibm.com
+        api-host: platform-api.us-east-a.apiconnect.automation.ibm.com
+        provider-org: 'demo'
+        catalog: 'sandbox'
+        apikey: ${{ secrets.apikey }}
+        product-file: 'product.yaml'
+        migrate_subscriptions: 'true'
+
+    - name: Test API in Sandbox
+      shell: python
+      run: |
+        import requests
+        webhook_url='https://hub.us-east-a.apiconnect.automation.ibm.com/apitest/api/rest/v1/b489c5cb-5787-4910-ba55-0feb4b83acd15'
+        r = requests.post(
+            url="{}/tests/run".format(webhook_url),
+            headers={
+              "X-API-Key":"${{ secrets.api_test_key}}",
+              "X-API-Secret":"${{ secrets.api_test_secret}}",
+              "Content-Type":"application/json"
+            },
+            data='{"options": { "allAssertions": true,"JUnitFormat": false}}'
+        )
+        results = r.json()
+        return_code = 0
+        for result in results:
+          print("Test: {testName}\tResult: {status}".format(**result))
+          if result['status'] != 'passed':
+            return_code += 1
+        exit(return_code)
+
+    - name: Deploy API to Showcase
+      uses: ibm-apiconnect/actions@main
+      with:
+        manager-host: api-manager.us-east-a.apiconnect.automation.ibm.com
+        api-host: platform-api.us-east-a.apiconnect.automation.ibm.com
+        provider-org: 'demo'
+        catalog: 'showcase'
+        apikey: ${{ secrets.apikey }}
+        product-file: 'product.yaml'
+

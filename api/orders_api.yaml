@@ -1,0 +1,268 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Order
+  x-ibm-name: ibm-sample-order-api
+  description: View and track your orders and deliveries
+  termsOfService: 'This API is provided as a sample with no associated guarantees.  '
+  contact:
+    name: Ricky Moorhouse
+basePath: /order
+x-ibm-configuration:
+  properties:
+    target-url:
+      value: https://sample-api.us-east-a.apiconnect.automation.ibm.com/orders/order/{order-number}
+      description: URL of the proxy policy
+      encoded: false
+  cors:
+    enabled: true
+  gateway: datapower-api-gateway
+  type: rest
+  phase: realized
+  enforced: true
+  testable: true
+  assembly:
+    execute:
+      - invoke:
+          title: order lookup
+          version: 2.0.0
+          verb: keep
+          target-url: $(target-url)
+          follow-redirects: false
+          timeout: 60
+          parameter-control:
+            type: blocklist
+            values: []
+          header-control:
+            type: blocklist
+            values: []
+          inject-proxy-headers: true
+          persistent-connection: true
+          backend-type: json
+          output: order
+          description: >-
+            Retrieves order data from the fulfillment system using the key of
+            the provided order number.
+      - parse:
+          version: 2.1.0
+          title: parse response
+          parse-settings-reference:
+            default: apic-default-parsesettings
+          input: order
+          output: order
+          description: >-
+            Parse the JSON from the order fulfillment system so that the values
+            can be used later in the flow.
+      - map:
+          version: 2.0.0
+          title: map input to lambda
+          inputs:
+            input:
+              schema:
+                type: object
+                properties:
+                  delivery_method:
+                    type: string
+                    name: delivery_method
+                  tracking_reference:
+                    type: string
+                    name: tracking_reference
+              variable: order.body
+          outputs:
+            output:
+              schema:
+                type: object
+                properties:
+                  shipper:
+                    type: string
+                    name: shipper
+                  reference:
+                    type: string
+                    name: reference
+              variable: message.body
+              content: application/json
+          actions:
+            - set: output.shipper
+              from: input.delivery_method
+            - set: output.reference
+              from: input.tracking_reference
+      - invoke:
+          version: 2.2.0
+          title: 'lambda: track shipment'
+          backend-type: detect
+          header-control:
+            type: blocklist
+            values: []
+          parameter-control:
+            type: allowlist
+            values: []
+          http-version: HTTP/1.1
+          timeout: 60
+          verb: POST
+          chunked-uploads: true
+          persistent-connection: true
+          cache-response: protocol
+          cache-ttl: 900
+          stop-on-error: []
+          websocket-upgrade: false
+          target-url: >-
+            https://plgej7e2skungmxzjakprvhe340qkrkl.lambda-url.us-east-1.on.aws/
+          output: tracking
+          graphql-send-type: detect
+          description: >-
+            Call lambda function to look up the tracking for a  parcel with the
+            associated shipping company.
+      - map:
+          version: 2.0.0
+          title: combine data for response
+          inputs:
+            tracking:
+              schema:
+                type: object
+                properties:
+                  trackResponse:
+                    type: object
+                    name: trackResponse
+                    properties:
+                      shipment:
+                        type: object
+                        name: shipment
+                        properties:
+                          package:
+                            type: object
+                            name: package
+                            properties:
+                              activity:
+                                type: array
+                                name: activity
+                                items:
+                                  type: object
+                                  properties:
+                                    status:
+                                      type: object
+                                      name: status
+              variable: tracking.body
+            order:
+              schema:
+                type: object
+                properties:
+                  order_number:
+                    type: string
+                    name: order_number
+                  created_at:
+                    type: string
+                    name: created_at
+                  shipped_at:
+                    type: string
+                    name: shipped_at
+                  status:
+                    type: string
+                    name: status
+                  tracking_reference:
+                    type: string
+                    name: tracking_reference
+              variable: order.body
+          outputs:
+            output:
+              schema:
+                type: object
+                properties:
+                  order_number:
+                    type: string
+                    name: order_number
+                  status:
+                    type: string
+                    name: status
+                  shipped_at:
+                    type: string
+                    name: shipped_at
+                  tracking_reference:
+                    type: string
+                    name: tracking_reference
+                  tracking_status:
+                    type: object
+                    name: tracking_status
+                  created_at:
+                    type: string
+                    name: created_at
+              variable: message.body
+          actions:
+            - set: output.order_number
+              from: order.order_number
+            - set: output.tracking_status
+              from: tracking.trackResponse.shipment.package.activity.status
+            - set: output.shipped_at
+              from: order.shipped_at
+            - set: output.tracking_reference
+              from: order.tracking_reference
+            - set: output.status
+              from: order.status
+            - set: output.created_at
+              from: order.created_at
+    finally: []
+  activity-log:
+    enabled: true
+    success-content: activity
+    error-content: payload
+paths:
+  /{order-number}:
+    parameters:
+      - name: order-number
+        required: true
+        in: path
+        type: string
+        description: >-
+          Order number to lookup - you should find this in your confirmation
+          e-mail
+    get:
+      responses:
+        '200':
+          description: Order found successfully
+          schema:
+            type: object
+            title: Order Details
+            properties:
+              order_number:
+                title: Order Number
+                type: string
+                example: ORD00989792
+              tracking_status:
+                title: Tracking Status
+                type: object
+              shipped_at:
+                title: Date Shipped
+                type: string
+                format: date-time
+              created_at:
+                title: Date Order Created
+                type: string
+                format: date-time
+              status:
+                title: Order Status
+                type: string
+                enum:
+                  - SHIPPED
+                  - PICKED
+                  - PENDING
+                  - DELIVERED
+              tracking_reference:
+                title: Tracking Reference
+      summary: Retrieve the details of your order.
+      produces:
+        - application/json
+securityDefinitions:
+  clientID:
+    type: apiKey
+    in: header
+    name: X-IBM-Client-Id
+security:
+  - clientID: []
+schemes:
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+externalDocs:
+  url: https://github.com/ibm-apiconnect/sample-orders-api
+  description: Github project for this API, containing source code and deployment pipeline
