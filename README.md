@@ -16,7 +16,7 @@ Firstly the API takes the input of an order number and then uses it to query our
 
 ## Step by step guide:
 
-1. Click here to access the [sample API](https://raw.githubusercontent.com/ibm-apiconnect/sample-orders-api/doc-changes/api/orders_api.yaml) in the github page
+1. Click here to access the [sample API](https://raw.githubusercontent.com/ibm-apiconnect/sample-orders-api/main/api/orders_api.yaml) in the github page
 
     - navigate to the API folder, open the “order_api.yaml” file and click raw
     - Then navigate to the API Connect Instance and follow the next step to import/paste the URL
@@ -26,7 +26,7 @@ Firstly the API takes the input of an order number and then uses it to query our
  - In the homepage, select “Develop API”
  - Click "Add" and then select "API from REST, GraphGL or SOAP"
  - On the next page select Import "existing OpenAPI"
- - Paste the URL path (from step 1) `https://raw.githubusercontent.com/ibm-apiconnect/sample-orders-api/doc-changes/api/orders_api.yaml` in the "specify a file URL" field
+ - Paste the URL path (from step 1) `https://raw.githubusercontent.com/ibm-apiconnect/sample-orders-api/main/api/orders_api.yaml` in the "specify a file URL" field
 
 **NB.** if you have previously imported the same API you will need to delete it first otherwise you will get an error. 
 
