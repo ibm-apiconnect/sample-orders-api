@@ -25,16 +25,24 @@ Firstly the API takes the input of an order number and then uses it to query our
 
  - Navigate to the API Connect Console - [APIC on AWS (us-east)](https://api-manager.us-east-a.apiconnect.automation.ibm.com/manager/), [APIC on AWS (eu-central)](https://api-manager.eu-central-a.apiconnect.automation.ibm.com/manager/)
  - In the homepage, select “Develop API”
+ ![API Manager UI](images/api-manager.png)
+ 
  - Click "Add" and then select "API from REST, GraphGL or SOAP"
+  ![Develop APIs - Add API](images/develop-add.png)
+ 
  - On the next page select Import "existing OpenAPI"
  - In the "specify a file URL" field, paste the yaml file url that you copied from the previous step (`https://raw.githubusercontent.com/ibm-apiconnect/sample-orders-api/main/api/orders_api.yaml`) **Note:** if you have previously imported the same API you will need to delete it first otherwise you will get an error. 
+ ![Specify the URL to import](images/import-url.png) 
+
  - Check the “Activate API” box and click Next
      - By activating your API, you now published the API into the development sandbox in order to test it right away. 
      - your API is now online and you will be shown the details such as Catalog URL and Sample Sandbox credentials which you don’t need to worry about at this point.
  - Click “Edit API” which takes you to the API editor where you can make updates, publish and test your API.
+ ![Import API Complete](images/import-complete.png) 
 
 ### Step 3. Explore the API definition
 This is the API Editor where you can view and edit API definitions (REST, SOAP and GraphQL). With the tree navigation structure you can easily drill down to each specific Open API object within the document. 
+ ![API Editor](images/api-editor.png) 
 
   - Click the “Design” tab on the top. Details about  your API definition, “API specifications”, and “Path” are presented on the left hand side navigation. 
   - Navigate to the “Gateway” tab to view the assembly flow for the API
@@ -49,11 +57,17 @@ This is the API Editor where you can view and edit API definitions (REST, SOAP a
 ### Step 4: You can now start calling your API to test it
   - Click on to the "Test" tab on the top
   - Type in any value for the “order-number” field and click “Send”
+ ![Testing the API](images/test-api.png) 
+ 
   - Now you can see the tracking details output.
     - we have the order “create_at” date coming form ordering Database
     - we also have the “status” of the order as “shipped” and the “shipped_at” date
     - you can see the "tracking_status" section showing the data from the shipping company
+ ![Testing the API - the response](images/test-response.png) 
+    
+   
   - You can now click on the “Trace” tab to view how the API has gone through every step and if needed, debug your API.
+ ![Testing the API - tracing](images/test-trace.png) 
 
 You have now completed the introductory/basic steps to import the sample API, create an API definition, and test the API response. 
 
