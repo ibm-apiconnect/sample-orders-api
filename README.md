@@ -1,13 +1,13 @@
 # API Sample: Order tracking
 
-This git repo contains a sample API to use with API Connect.  If you want to try API Connect, you can sign up for a [free 30 day trial](https://register.automation.ibm.com/apic/trial/aws?source=github_sample) and import this API.
+This git repo contains a sample API to use with API Connect.  If you want to try API Connect, you can [sign up for a free 30 day trial](https://register.automation.ibm.com/apic/trial/aws?source=github_sample) and import this API.
 
 
 This document will guide you through the introductory/basic steps to import the sample API into your API Connect instance, create an API definition, and test the response of your API in order to validate the API returns what you expect.
 
 ## About this sample
 
-These days we all have purchased something online and after your payment is successful, you are provided a tracking number which enables you to track your package and receive daily status on your package.
+We have all purchased something online and after your payment is processed, you are provided a tracking number to track your package and receive daily status on your shipping. 
 
 This API demonstrates how you can build a composite API within API Connect combining data from two different backend sources - our order fulfillment system and the delivery companies shipment tracking to provide an order tracking API for App Developers to build on.  
 
@@ -34,6 +34,8 @@ Firstly the API takes the input of an order number and then uses it to query our
  - Click “Edit API” which takes you to the API editor where you can make updates, publish and test your API.
 
 ### Step 3. Explore the API definition
+This is the API Editor where you can view and edit API definitions (REST, SOAP and GraphQL). With the tree navigation structure you can easily drill down to each specific Open API object within the document. 
+
   - Click the “Design” tab on the top. Details about  your API definition, “API specifications”, and “Path” are presented on the left hand side navigation. 
   - Navigate to the “Gateway” tab to view the assembly flow for the API
     - **order lookup**: invoke policy which calls the order fulfillment system to retrieve the order details for the provided order number such as “order status” ,“ shipping carrier” and “tracking number” 
