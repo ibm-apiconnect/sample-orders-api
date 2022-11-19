@@ -32,7 +32,7 @@ Start to develop and test your API by completing the following 4 simple steps:
 ### Step1. Click here to access the [sample API definition](https://raw.githubusercontent.com/ibm-apiconnect/sample-orders-api/main/api/orders_api.yaml) 
 
  - Navigate to the API folder.
-   ![GitHub repo - apis folder](images/github-api-folder.png.png)
+   ![GitHub repo - apis folder](images/github-api-folder.png)
 
  - Open the “order_api.yaml” file and click "Raw". Copy the file's URL from the address bar:
 
