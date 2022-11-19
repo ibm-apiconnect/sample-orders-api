@@ -22,7 +22,7 @@ This tutorial demonstrates how you can develop test, secure, socialize and analy
 
 ### Demo Video
 
-Before you begin, watch this [5 minute video]() to see how easy it is to create and test your order tracking API with API Connect.
+Before you begin, watch this [5 minute video](https://www.youtube.com/watch?v=HJUM55zoCO0) to see how easy it is to create and test your order tracking API with API Connect.
 
 
 ## Step by step guide:
