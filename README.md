@@ -76,6 +76,7 @@ You are now in the API Editor, where you can view and edit API definitions.
     - **map input to lambda**: Takes the “tracking number” and “shipping carrier” from the order details to build the input needed for invoking the AWS Lambda function in the next policy in the flow.
     - **lambda: track shipment**:  Calls the Lambda function to look up the tracking data for the retrieved tracking number and shipping carrier.
     - **combine data for response**: The map policy takes  the responses from “order lookup” and “lambda: track shipment” policies and combine them into a single output so when the customer calls this API, they get both the order details from the company order database and the shipping status from the carrier.
+
 ![Sample API Assembly flow](images/sample-api-flow.png) 
 
 
