@@ -29,7 +29,7 @@ Before you begin, watch this [5 minute video](https://www.youtube.com/watch?v=HJ
 
 Start to develop and test your API by completing the following 4 simple steps: 
 
-### Step1. Click here to access the [sample API definition](https://raw.githubusercontent.com/ibm-apiconnect/sample-orders-api/main/api/orders_api.yaml) 
+### Step 1. Click here to access the [sample API definition](https://raw.githubusercontent.com/ibm-apiconnect/sample-orders-api/main/api/orders_api.yaml) 
 
  - Navigate to the API folder.
    ![GitHub repo - apis folder](images/github-api-folder.png)
@@ -45,13 +45,13 @@ Start to develop and test your API by completing the following 4 simple steps:
  - In the homepage, select Develop APIs and products.
  ![API Manager UI](images/api-manager.png)
  
- - On the _Develop_ page, click Add and  select API (from REST, GraphQL or SOAP). 
+ - On the _Develop_ page, click Add and  select "_API (from REST, GraphQL or SOAP)_". 
   ![Develop APIs - Add API](images/develop-add.png)
  
  - On the _Select API type_ page, leave the OpenAPI 2.0 tab selected and under “_Import_”, select “_Existing OpenAPI_”. Click Next. 
   ![Select API type - import](images/select-import.png)
 
- - In the “Or specify a file URL field, paste the URL from Step 1.  Click Next. 
+ - In the "Or specify a file URL" field, paste the URL from Step 1.  Click Next. 
  - **Note:** if you have previously imported the same API you will need to delete it before importing it again.
   ![Specify the URL to import](images/import-url.png) 
 
@@ -107,8 +107,8 @@ Now you have an API with which you can explore some of the other capabilities of
 
  - [**Secure**](https://www.ibm.com/docs/en/api-connect/saas?topic=apis-security-authentication) your API with additional security requirements such as OAuth
  - [**Automate**](automate.md)  your API deployment as part of a CI/CD pipeline
- - **Analyze** your API traffic using the Analytics dashboards
- - **Socialize** your API  by sharing it with your customers in a Developer Portal
+ - [**Analyze**](https://www.ibm.com/docs/en/api-connect/saas?topic=SSMNED_10eaas/com.ibm.apic.apionprem.doc/capim_analytics_apianalytics.htm) your API traffic using the Analytics dashboards
+ - [**Socialize**])(https://www.ibm.com/docs/en/api-connect/saas?topic=developer-portal-socialize-your-apis) your API  by sharing it with your customers in a Developer Portal
 
 ## Support
 This is a publicly available sample and comes with no guarantees. At the time of publishing, the API Connect product and the sample API perform as described in this tutorial. If you have any questions, you can visit the [API Connect user community](https://ibm.biz/APIC_User_Community) page to read other users’ questions and ask your own questions.
