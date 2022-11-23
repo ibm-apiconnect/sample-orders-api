@@ -108,7 +108,7 @@ Now you have an API with which you can explore some of the other capabilities of
  - [**Secure**](https://www.ibm.com/docs/en/api-connect/saas?topic=apis-security-authentication) your API with additional security requirements such as OAuth
  - [**Automate**](automate.md)  your API deployment as part of a CI/CD pipeline
  - [**Analyze**](https://www.ibm.com/docs/en/api-connect/saas?topic=SSMNED_10eaas/com.ibm.apic.apionprem.doc/capim_analytics_apianalytics.htm) your API traffic using the Analytics dashboards
- - [**Socialize**])(https://www.ibm.com/docs/en/api-connect/saas?topic=developer-portal-socialize-your-apis) your API  by sharing it with your customers in a Developer Portal
+ - [**Socialize**](https://www.ibm.com/docs/en/api-connect/saas?topic=developer-portal-socialize-your-apis) your API  by sharing it with your customers in a Developer Portal
 
 ## Support
 This is a publicly available sample and comes with no guarantees. At the time of publishing, the API Connect product and the sample API perform as described in this tutorial. If you have any questions, you can visit the [API Connect user community](https://ibm.biz/APIC_User_Community) page to read other users’ questions and ask your own questions.
