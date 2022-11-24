@@ -13,7 +13,7 @@ basePath: /order
 x-ibm-configuration:
   properties:
     target-url:
-      value: https://sample-api.us-east-a.apiconnect.automation.ibm.com/orders/order/{order-number}
+      value: https://sample-api.us-east-a.apiconnect.automation.ibm.com/orders/order/{orderNumber}
       description: URL of the proxy policy
       encoded: false
   cors:
@@ -207,9 +207,9 @@ x-ibm-configuration:
     success-content: activity
     error-content: payload
 paths:
-  /{order-number}:
+  /{orderNumber}:
     parameters:
-      - name: order-number
+      - name: orderNumber
         required: true
         in: path
         type: string
