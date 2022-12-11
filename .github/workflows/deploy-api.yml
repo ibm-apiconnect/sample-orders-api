@@ -23,6 +23,7 @@ jobs:
 
     - name: Test API in Sandbox
       shell: python
+      if: ${{ github.repository_owner == 'ibm-apiconnect' }}
       run: |
         import requests
         webhook_url='https://hub.us-east-a.apiconnect.automation.ibm.com/apitest/api/rest/v1/b489c5cb-5787-4910-ba55-0feb4b83acd15'
