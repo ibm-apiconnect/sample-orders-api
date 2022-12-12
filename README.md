@@ -18,11 +18,14 @@ This tutorial demonstrates how you can develop test, secure, socialize and analy
 
  - First, you will import the sample API into your API Connect instance and activate it.
  - Then, you will explore the API definition to see how it works.
- - Finally, you will test the response of your API to validate that it works correctly.
+ - Next, you will test the response of your API to validate that it works correctly.
+ - Then you will add additional security to your API.
+ - Then you will use the analytics feature to review and analyse your API's usage. 
+ - Finally, you will use the API lifecycle features of API Connect to keep the API updted as your systems evolve.
 
 ### Demo Video
 
-Before you begin, watch this [5 minute video](https://www.youtube.com/watch?v=HJUM55zoCO0) to see how easy it is to create and test your order tracking API with API Connect.
+Before you begin, watch this [5 minute video](https://www.youtube.com/watch?v=HJUM55zoCO0) to see how easy it is to create, test, secure and analyse your order tracking API with API Connect.
 
 
 ## Step by step guide:
@@ -41,7 +44,7 @@ Start to develop and test your API by completing the following 4 simple steps:
 
 ### Step 2. Import the sample to your API Connect instance
 
- - Navigate to the API Connect Console at [APIC on AWS (us-east)](https://api-manager.us-east-a.apiconnect.automation.ibm.com/manager/) or [APIC on AWS (eu-central)](https://api-manager.eu-central-a.apiconnect.automation.ibm.com/manager/). (If you don't have an API Connect instance provisioned -  [sign up for a free 30 day trial now](https://register.automation.ibm.com/apic/trial/aws?source=github_sample))
+ - Navigate to the API Connect Console at [APIC on AWS (US East)](https://api-manager.us-east-a.apiconnect.automation.ibm.com/manager/),  [APIC on AWS (Frankfurt)](https://api-manager.eu-central-a.apiconnect.automation.ibm.com/manager/) or  [APIC on AWS (London)](https://api-manager.eu-west-a.apiconnect.automation.ibm.com/manager/). (If you don't have an API Connect instance provisioned -  [sign up for a free 30 day trial now](https://register.automation.ibm.com/apic/trial/aws?source=github_sample))
  - In the homepage, select Develop APIs and products.
  ![API Manager UI](images/api-manager.png)
  
@@ -98,7 +101,74 @@ Now, let's test it out:
   - In the “Response” section, select the “Trace” tab to view how the API call was executed. Tracing the API’s execution helps when you need to debug your API. 
  ![Testing the API - tracing](images/test-trace.png) 
 
-**DONE:** Great work! You created and tested your order tracking sample API.  🎉🎉🎉 
+### Step 5: Add additional security requirements to your order tracking API.
+
+ - In the “Design” tab under “Security Schemes”, you only have the Client ID configured, so let’s add a Client Secret as well. Click the + to add Client Secret to “Security Schemes”. 
+ ![Add security schemes](images/step5.1.png)
+
+ - Fill in the fields listed  below and click Create.
+    - Security Definition Name (key) : use your own value  
+    - Security Definition Type : apiKey
+    - Key type : client_secret
+    - Locate In: header
+    - Variable name: write your own value
+
+ - You can now see “Client ID” and “Client Secret” listed under "Security Schemes” in the navigation list. 
+
+ - Scroll up and click “Security“ in the navigation list and select “edit icon” to edit this security requirement. 
+ ![Edit security requirements](images/step5.2.png)
+
+ - At the moment only “ClientID” is selected so click “ClientSecret” to require the Client Secret as well, and then save the API. 
+  ![Add Client Secret](images/step5.3.png)
+
+ - Click the Test tab, the Client ID and Client Secret are now displayed there. You can again provide any random value for the “order-number” field and click “Send” to run the test. You will see in the “Response Body” that the Client ID and Client Secret are used to make the request. 
+   ![Test again](images/step5.4.png)
+
+ - To verify that this additional security header is required, delete the Client Secret row in the parameters section of the “Test” tab and click “Send” to invoke the API again. You can see in the “HTTP Status” and the “Response Body” that the request was denied with a “401 Unauthorized” error because you didn’t provide a Client Secret. 
+   ![Remove client secret](images/step5.5.png)
+   ![Remove client secret](images/step5.6.png)
+
+### Step 6: Analyze your API calls and responses in the analytics dashboard. 
+
+Click “Analytics” on the left navigation list. On the Analytics page, multiple dashboard options display. Click  each dashboard to explore it and gain insights into your API. 
+
+**Note:** These dashboards will be more interesting and powerful once you get more and more API calls and responses logged. So to see more date in your dashboard, _use the Test tab to invoke your API a few times so you can generate some data for this step. Use several different order numbers, and then use one or two of those a couple times each._
+
+  ![Select Analytics](images/step6.1.png)
+
+API Dashboard:
+
+ - Start by exploring the “API Dashboard”. This dashboard shows the API calls that were made within this your service instance. Display charts summarize total API calls, response codes, and response times. 
+ ![API Dashboard](images/step6.2.png)
+
+ - Click the "Discover” tab to see the individual API calls. Click each call to view the steps that the API executed. 
+ ![Discover](images/step6.3.png)
+ ![Latency](images/step6.4.png)
+
+
+Product Dashboard:
+
+ - Products is a way to group your APIs into a product so consumers can subscribe to your product which is a set up APIs. Displays chart show total API calls and application subscriptions per plan (plans determine access to APIs and manage API usage. 
+
+Monitoring Latency Dashboard:
+
+ - Displays charts containing response time statistics and data usage to help analyze performance when you have a lot of traffics. 
+
+Monitoring Status Dashboard: 
+
+ - Displays charts that show the response codes and success/failure rates of API calls.
+
+Usage Dashboard: 
+
+ - Displays charts that show the top 5 APIs, products, and applications.
+
+Consumption Dashboard: 
+
+Displays a chart showing the total API consumption in your service instance.
+
+
+
+**DONE:** Great work! You just finished creating, testing, securing and analysing your order tracking sample API.  🎉🎉🎉 
 
 
 ## Next Steps
@@ -107,7 +177,6 @@ Now you have an API with which you can explore some of the other capabilities of
 
  - [**Secure**](https://www.ibm.com/docs/en/api-connect/saas?topic=apis-security-authentication) your API with additional security requirements such as OAuth
  - [**Automate**](automate.md)  your API deployment as part of a CI/CD pipeline
- - [**Analyze**](https://www.ibm.com/docs/en/api-connect/saas?topic=SSMNED_10eaas/com.ibm.apic.apionprem.doc/capim_analytics_apianalytics.htm) your API traffic using the Analytics dashboards
  - [**Socialize**](https://www.ibm.com/docs/en/api-connect/saas?topic=developer-portal-socialize-your-apis) your API  by sharing it with your customers in a Developer Portal
 
 ## Support
