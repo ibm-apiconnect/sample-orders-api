@@ -88,31 +88,14 @@ x-ibm-configuration:
               from: input.delivery_method
             - set: output.reference
               from: input.tracking_reference
-      - invoke:
-          version: 2.2.0
-          title: 'lambda: track shipment'
-          backend-type: detect
-          header-control:
-            type: blocklist
-            values: []
-          parameter-control:
-            type: allowlist
-            values: []
-          http-version: HTTP/1.1
-          timeout: 60
-          verb: POST
-          chunked-uploads: true
-          persistent-connection: true
-          cache-response: protocol
-          cache-ttl: 900
-          stop-on-error: []
-          websocket-upgrade: false
-          target-url: >-
-            https://plgej7e2skungmxzjakprvhe340qkrkl.lambda-url.us-east-1.on.aws/
-          output: tracking
-          graphql-send-type: detect
+      - aws-lambda:
+          version: 1.0.0
+          title: "lambda: track shipment"
+          function_name: orders
+          aws_region: us-east-1
+          aws_assume_role_arn: arn:aws:iam::091790783357:role/apiconnect-sample-orders-api-invoke
           description: >-
-            Call lambda function to look up the tracking for a  parcel with the
+            Call lambda function to look up the tracking for a parcel with the
             associated shipping company.
       - map:
           version: 2.0.0
