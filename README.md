@@ -21,7 +21,7 @@ This tutorial demonstrates how you can develop test, secure, socialize and analy
  - Next, you will test the response of your API to validate that it works correctly.
  - Then you will add additional security to your API.
  - Then you will use the analytics feature to review and analyse your API's usage. 
- - Finally, you will use the API lifecycle features of API Connect to keep the API updted as your systems evolve.
+ - Finally, you will use the API lifecycle features of API Connect to keep the API updated as your systems evolve.
 
 ### Demo Video
 
@@ -132,7 +132,7 @@ Now, let's test it out:
 
 Click “Analytics” on the left navigation list. On the Analytics page, multiple dashboard options display. Click  each dashboard to explore it and gain insights into your API. 
 
-**Note:** These dashboards will be more interesting and powerful once you get more and more API calls and responses logged. So to see more date in your dashboard, _use the Test tab to invoke your API a few times so you can generate some data for this step. Use several different order numbers, and then use one or two of those a couple times each._
+**Note:** These dashboards will be more interesting and powerful once you get more and more API calls and responses logged. So to see more data in your dashboard, _use the Test tab to invoke your API a few times so you can generate some data for this step. Use several different order numbers, and then use one or two of those a couple times each._
 
   ![Select Analytics](images/step6.1.png)
 
