@@ -1,4 +1,3 @@
-# (C) Copyright IBM Corporation 2022
 swagger: '2.0'
 info:
   version: 1.0.0
@@ -13,7 +12,8 @@ basePath: /order
 x-ibm-configuration:
   properties:
     target-url:
-      value: https://sample-api.us-east-a.apiconnect.automation.ibm.com/orders/order/{orderNumber}
+      value: >-
+        https://sample-api.us-east-a.apiconnect.automation.ibm.com/orders/order/{orderNumber}
       description: URL of the proxy policy
       encoded: false
   cors:
@@ -249,6 +249,7 @@ paths:
                   - DELIVERED
               tracking_reference:
                 title: Tracking Reference
+                type: string
       summary: Retrieve the details of your order.
       produces:
         - application/json
