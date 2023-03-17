@@ -4,7 +4,7 @@ info:
   version: 1.0.0
   title: Order
   x-ibm-name: ibm-sample-order-api
-  description: View and track your orders and deliveries
+  description: View and track your orders and deliveries.
   termsOfService: 'This API is provided as a sample with no associated guarantees.  '
   contact:
     name: IBM Corporation
