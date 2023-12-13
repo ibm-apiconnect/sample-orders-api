@@ -1,0 +1,27 @@
+requirements: {}
+configs: # TODO Add support for variables from config block
+  XIBMClientID: placeholder
+steps:
+  - type: request
+    method: get
+    url: http://localhost:8080/absolute-redirect/6
+    var: redirect
+    mode: json
+  - type: assert-equals 
+    expression: redirect_response_statusCode
+    value: 302
+  - type: assert-equals 
+    expression: redirect_response_header_Location
+    value: http://localhost:8080/absolute-redirect/5?
+  - type: request
+    method: get
+    url: http://localhost:8080/absolute-redirect/6
+    var: redirect
+    mode: json
+  - type: assert-equals 
+    expression: redirect_response_statusCode
+    value: 302
+  - type: assert-equals 
+    expression: redirect_response_header_Location
+    value: http://localhost:8080/absolute-redirect/5?
+
