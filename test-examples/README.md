@@ -2,26 +2,13 @@
 
 
 
-![Screenshot](screenshot.png)
+![Screenshot](../images/screenshot.png)
 
- - Create a yaml file to define your tests (see [example in test-examples/](../images/screenshot.png)) 
- - Build the CLI with `make api-test`
+ - Download and install apic toolkit [here](https://ibmdocs-test.dcs.ibm.com/docs/en/v10_CD_onprem_test?topic=toolkit-installing)
+ - Create a yaml file to define your tests (see [example in test-examples/](./)) 
  - Run the CLI following the syntax to execute the tests:
 ```
 api-test test {yaml-files}
-```
- - For executing the tests with certificate checks disabled ,run the CLI with the following syntax
- ```
- api-test test {yaml-files} --insecureSkipVerify
- ```
- - For executing the tests with mTLS enabled ,run the CLI with the following syntax 
- ```
- api-test test {yaml-files} --mTLS --certPath={location of certs folder}
- ```
- - For monitoring, run the CLI with the following syntax (where {frequency} is the number of seconds between runs):
-
-```
-api-test monitor -f {frequency} {yaml-files} 
 ```
 
 ## Test definition syntax
@@ -54,7 +41,7 @@ Assert that this variable from the response is of type `value`
 
 ### type: assert-exists 
 Assert that a particular variable specified in `expression` exists
-
+N
 ### type: assert-equals 
 Assert that a variable is equal to a value
  - expression - variable to test e.g. payload_response_statusCode
@@ -105,3 +92,7 @@ Loop over the array referenced in expression carrying out the sub-steps for each
     - type: assert-exists 
       expression: _1.api_version
 ```
+
+## Note
+
+To know more about testing API's using apic toolkit, check out the documentation [here](https://ibmdocs-test.dcs.ibm.com/docs/en/v10_CD_onprem_test?topic=toolkit-installing)
