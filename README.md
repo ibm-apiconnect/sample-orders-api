@@ -185,6 +185,4 @@ This is a publicly available sample and comes with no guarantees. At the time of
 
 ## Testing APIs using APIC CLI
 
-(IBM Documentation)[https://ibmdocs.dcs.ibm.com/docs/en/v10_CD_onprem_test?topic=tool-using-toolkit-cli-execute-api-tests]
-
-(Click here to know more about how to write test and execute using apic cli)[https://github.com/ibm-apiconnect/sample-orders-api/blob/main/test-examples/README.md]
+- [Explore additional information on writing tests and executing them using the apic CLI by clicking here.](https://github.com/ibm-apiconnect/sample-orders-api/blob/main/test-examples/README.md)
