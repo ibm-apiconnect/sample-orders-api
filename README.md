@@ -183,6 +183,11 @@ Now you have an API with which you can explore some of the other capabilities of
 This is a publicly available sample and comes with no guarantees. At the time of publishing, the API Connect product and the sample API perform as described in this tutorial. If you have any questions, you can visit the [API Connect user community](https://ibm.biz/APIC_User_Community) page to read other users’ questions and ask your own questions.
 
 
-## Testing APIs using APIC CLI
+## Test Sample Order API APIC CLI
+#### Step 1: Download and Install APIC Toolkit
+To begin testing APIs using APIC CLI, it is essential to download and install the APIC toolkit. Detailed instructions for this process can be accessed [here](https://ibmdocs-test.dcs.ibm.com/docs/en/v10_CD_onprem_test?topic=toolkit-installing).
 
-- [Execute a simple test](./test-examples/simple/README.md)
+#### Step 2: Create and Execute Tests
+To initiate the testing process, follow the steps outlined in the documentation below. 
+
+- [Test Sample Order API](./test-examples/simple/README.md)
