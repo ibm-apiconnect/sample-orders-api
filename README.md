@@ -181,3 +181,10 @@ Now you have an API with which you can explore some of the other capabilities of
 
 ## Support
 This is a publicly available sample and comes with no guarantees. At the time of publishing, the API Connect product and the sample API perform as described in this tutorial. If you have any questions, you can visit the [API Connect user community](https://ibm.biz/APIC_User_Community) page to read other users’ questions and ask your own questions.
+
+
+## Testing APIs using APIC CLI
+
+(IBM Documentation)[https://ibmdocs.dcs.ibm.com/docs/en/v10_CD_onprem_test?topic=tool-using-toolkit-cli-execute-api-tests]
+
+(Click here to know more about how to write test and execute using apic cli)[https://github.com/ibm-apiconnect/sample-orders-api/blob/main/test-examples/README.md]

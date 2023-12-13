@@ -1,0 +1,12 @@
+base_url: https://sample-api.us-east-a.apiconnect.automation.ibm.com
+api_key: "cadsfghj"
+value: 200
+map1:
+  path1: branches1
+  path: branches
+boolean: true
+array:
+  - array1
+  - payload
+  - application/swagger+yaml
+XIBMClientID: placeholder
