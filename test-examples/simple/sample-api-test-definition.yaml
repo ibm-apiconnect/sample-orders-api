@@ -1,32 +1,10 @@
-requirements: {}
-configs: # TODO Add support for variables from config block
-  XIBMClientID: placeholder
 steps:
   - type: request
     method: get
-    url: https://sample-api.us-east-a.apiconnect.automation.ibm.com/bank/branches
-    var: branches
-    mode: json
-  - type: assert-is
-    expression: branches
-    value: array
-  - type: assert-exists 
-    expression: branches.[1]
-    stoponfail: true
-  - type: assert-is 
-    expression: branches.[0].type
-    value: string
-    stoponfail: true    
-  - type: assert-is 
-    expression: branches.[0].address.city
-    value: string
-    stoponfail: true  
-  - type: assert-compares 
-    expression1: branches.[0].type
-    expression2: branches.[7].type  
-  - type: request
-    method: get
-    url: https://sample-api.us-east-a.apiconnect.automation.ibm.com/orders/order/AB1234
+    headers: 
+      # X-IBM-Client-Id can be obtained from Sandbox catalog application
+      X-IBM-Client-Id: <placeholder>
+    url: https://api.eu-west-a.apiconnect.ibmappdomain.cloud/demo/sandbox/order/ABC123
     var: payload
     mode: json
   - type: assert-equals 
