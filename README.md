@@ -185,4 +185,4 @@ This is a publicly available sample and comes with no guarantees. At the time of
 
 ## Testing APIs using APIC CLI
 
-- [Explore additional information on writing tests and executing them using the apic CLI by clicking here.](https://github.com/ibm-apiconnect/sample-orders-api/blob/main/test-examples/README.md)
+- [Execute a simple test](./test-examples/simple/README.md)
