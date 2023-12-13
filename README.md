@@ -185,7 +185,7 @@ This is a publicly available sample and comes with no guarantees. At the time of
 
 ## Test Sample Order API with APIC cli
 #### Step 1: Download and Install APIC Toolkit
-To begin testing APIs using APIC CLI, it is essential to download and install the APIC toolkit. Detailed instructions for this process can be accessed [here](https://ibmdocs-test.dcs.ibm.com/docs/en/v10_CD_onprem_test?topic=toolkit-installing).
+To begin testing APIs using APIC CLI, it is essential to download and install the APIC toolkit. Detailed instructions for this process can be accessed [here](https://www.ibm.com/docs/en/api-connect/10.0.x?topic=configuration-installing-toolkit).
 
 #### Step 2: Create and Execute Tests
 To initiate the testing process, follow the steps outlined in the documentation below. 
