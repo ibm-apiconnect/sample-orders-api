@@ -6,7 +6,7 @@ info:
   contact:
     name: IBM Corporation
     url: https://www.ibm.com/products/api-connect
-  version: 2.0.0
+  version: 2.0.1
   x-ibm-name: ibm-sample-order-api
 externalDocs:
   description: "Github project for this API, containing source code and deployment\
@@ -146,30 +146,13 @@ x-ibm-configuration:
           from: input.delivery_method
         - set: output.reference
           from: input.tracking_reference
-    - invoke:
-        version: 2.2.0
-        title: "lambda: track shipment"
-        backend-type: detect
-        header-control:
-          type: blocklist
-          values: []
-        parameter-control:
-          type: allowlist
-          values: []
-        http-version: HTTP/1.1
-        timeout: 60
-        verb: POST
-        chunked-uploads: true
-        persistent-connection: true
-        cache-response: protocol
-        cache-ttl: 900
-        stop-on-error: []
-        websocket-upgrade: false
-        target-url: https://plgej7e2skungmxzjakprvhe340qkrkl.lambda-url.us-east-1.on.aws/
-        output: tracking
-        graphql-send-type: detect
-        description: Call lambda function to look up the tracking for a  parcel with
-          the associated shipping company.
+    - aws-lambda:
+        version: 1.0.0
+        title: aws-lambda - tracking
+        aws_assume_role_arn: arn:aws:iam::091790783357:role/apiconnect-sample-orders-api-invoke
+        function_name: orders
+        aws_region: us-east-1
+        description: Call lambda function to look up the tracking for a parcel with the associated shipping company.
     - map:
         version: 2.0.0
         title: combine data for response

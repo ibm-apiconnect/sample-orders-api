@@ -12,10 +12,10 @@ plans:
       default:
         value: 100/1hour
     apis:
-      order2.0.0: {}
+      order2.0.1: {}
       stock1.0.0: {}
 apis:
-  order2.0.0:
+  order2.0.1:
     $ref: api/orders_api.yaml
   stock1.0.0:
     $ref: api/stock.yaml
