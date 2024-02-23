@@ -12,7 +12,7 @@ plans:
       default:
         value: 100/1hour
     apis:
-      order1.0.0: {}
+      order2.0.0: {}
       stock1.0.0: {}
 apis:
   order2.0.0:
