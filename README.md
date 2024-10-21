@@ -45,7 +45,7 @@ Start to develop and test your API by completing the following 4 simple steps:
 ### Step 2. Import the sample to your API Connect instance
 
  - Navigate to the API Connect Console at [APIC on AWS (US East)](https://api-manager.us-east-a.apiconnect.automation.ibm.com/manager/),  [APIC on AWS (Frankfurt)](https://api-manager.eu-central-a.apiconnect.automation.ibm.com/manager/) or  [APIC on AWS (London)](https://api-manager.eu-west-a.apiconnect.automation.ibm.com/manager/). (If you don't have an API Connect instance provisioned -  [sign up for a free 30 day trial now](https://register.automation.ibm.com/apic/trial/aws?source=github_sample))
- - In the homepage, select Develop APIs and products.
+ - In the homepage, select Create an API.
  ![API Manager UI](images/api-manager.png)
  
  - On the _Develop_ page, click Add and  select "_API (from REST, GraphQL or SOAP)_". 
@@ -58,10 +58,6 @@ Start to develop and test your API by completing the following 4 simple steps:
  - **Note:** if you have previously imported the same API you will need to delete it before importing it again.
   ![Specify the URL to import](images/import-url.png) 
 
- - Select “_Activate API_” to publish the API into the development sandbox so you can start testing it.  Click Next. 
-  ![Activate the API](images/import-activate.png) 
-
- -  A summary displays the new API’s base endpoint URL as well as its application credentials; you won’t need those values for this tutorial.
  -  Select “_Edit API_” to open the API editor, where you can modify, publish, and test your API. 
  ![Import API Complete](images/import-complete.png) 
 
@@ -85,9 +81,12 @@ You are now in the API Editor, where you can view and edit API definitions.
 
 ### Step 4: Test your API
 Now, let's test it out:
-  - Make sure your API shows as “_Online_”. If it’s offline, click the toggle to make your API online, which publishes it to the gateway so it’s available to use.
   - Select the "_Test_" tab to switch to the Test page.
  ![Select the Test tab](images/api-editor-test.png) 
+  - You will see the API is initially shown as offline, in order to make it available to use we will need to publish it. For this we will enable auto publish. 
+  - Click the "_Target Configuration_" button
+  - Toggle the switch for "_Auto-publish_" to On
+  - You will now see the API is showing as Online, so we can proceed to make a test call to it. 
 
   - In the “_Request_” section, type any value for the “_order-number_” field in the parameters list and click “_Send_”. 
  ![Testing the API](images/api-editor-test-params.png) 
